@@ -40,25 +40,26 @@ export const QUERY_ME = gql`
 
 // users: [User]
 export const QUERY_USERS = gql`
-    {
-        users {
-            _id
-            username
-            threads {
-                _id
-                threadText
-                createdAt
-                username
-                genre
-                postCount
-            }
-            threadCount
-            friends {
-                _id
-                username
-                threadCount
-            }
-    }
+	{
+		users {
+			_id
+			username
+			threads {
+				_id
+				threadText
+				createdAt
+				username
+				genre
+				postCount
+			}
+			threadCount
+			friends {
+				_id
+				username
+				threadCount
+			}
+		}
+	}
 `;
 // user(username: String!): User
 export const QUERY_USER = gql`

@@ -31,6 +31,19 @@ export const ADD_THREAD = gql`
 			genre
 			createdAt
 			username
+		}
+	}
+`;
+
+// addPost(threadId: ID!, postBody: String!): Thread
+export const ADD_POST = gql`
+	mutation addPost($threadId: ID!, $postBody: String!) {
+		addPost(threadId: $threadId, postBody: $postBody) {
+            _id
+			threadText
+			genre
+			createdAt
+			username
 			posts {
                 _id
 				postBody
@@ -41,24 +54,16 @@ export const ADD_THREAD = gql`
 	}
 `;
 
-// addPost(threadId: ID!, postBody: String!): Thread
-export const ADD_POST = gql`
-	mutation addPost($threadId: ID!, $postBody: String!) {
-		addPost(threadId: $threadId, postBody: $postBody) {
-            _id
-			postBody
-			username
-			createdAt
-		}
-	}
-`;
-
 // addFriend(friendId: ID!): User
 export const ADD_FRIEND = gql`
 	mutation addFriend($friendId: ID!) {
 		addFriend(friendId: $friendId) {
 			_id
-			username
+            username
+            friends {
+                _id
+                username
+            }
 		}
 	}
 `;
