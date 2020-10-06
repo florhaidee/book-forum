@@ -3,8 +3,8 @@ const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const resolvers = {
 	Query: {
-		threads: async (parent, { username }) => {
-			const params = username ? { username } : {};
+		threads: async (parent, { username, genre }) => {
+			const params = username ? { username } : genre ? { genre } : {};
 			return Thread.find(params).sort({ createdAt: -1 });
 		},
 		thread: async (parent, { _id }) => {

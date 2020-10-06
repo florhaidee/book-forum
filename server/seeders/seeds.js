@@ -37,13 +37,16 @@ db.once('open', async () => {
 
   // create threads
   let createdThreads = [];
+  let genres = ['Fantasy', 'Adventure', 'Romance', 'Mystery'];
   for (let i = 0; i < 100; i += 1) {
     const threadText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdThread = await Thread.create({ threadText, username });
+    const genre = genres[Math.floor(Math.random() * genres.length)];
+
+	const createdThread = await Thread.create({ threadText, username, genre });
 
     const updatedUser = await User.updateOne(
       { _id: userId },

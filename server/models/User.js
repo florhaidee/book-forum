@@ -59,6 +59,10 @@ userSchema.virtual('friendCount').get(function() {
   return this.friends.length;
 });
 
+userSchema.virtual('threadCount').get(function () {
+	return this.threads.length;
+});
+
 const User = model('User', userSchema);
 
 module.exports = User;

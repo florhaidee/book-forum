@@ -26,11 +26,13 @@ export const ADD_USER = gql`
 export const ADD_THREAD = gql`
 	mutation addThread($threadText: String!, $genre: String!) {
 		addThread(threadText: $threadText, genre: $genre) {
+            _id
 			threadText
 			genre
 			createdAt
 			username
 			posts {
+                _id
 				postBody
 				username
 				createdAt
@@ -43,6 +45,7 @@ export const ADD_THREAD = gql`
 export const ADD_POST = gql`
 	mutation addPost($threadId: ID!, $postBody: String!) {
 		addPost(threadId: $threadId, postBody: $postBody) {
+            _id
 			postBody
 			username
 			createdAt
