@@ -1,10 +1,10 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Thought, User } = require('../models');
+const { Thread, User } = require('../models');
 
 db.once('open', async () => {
-  await Thought.remove({});
+  await Thread.remove({});
   await User.remove({});
 
   // create user data
@@ -35,37 +35,37 @@ db.once('open', async () => {
     await User.updateOne({ _id: userId }, { $addToSet: { friends: friendId } });
   }
 
-  // create thoughts
-  let createdThoughts = [];
+  // create threads
+  let createdThreads = [];
   for (let i = 0; i < 100; i += 1) {
-    const thoughtText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const threadText = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username, _id: userId } = createdUsers.ops[randomUserIndex];
 
-    const createdThought = await Thought.create({ thoughtText, username });
+    const createdThread = await Thread.create({ threadText, username });
 
     const updatedUser = await User.updateOne(
       { _id: userId },
-      { $push: { thoughts: createdThought._id } }
+      { $push: { threads: createdThread._id } }
     );
 
-    createdThoughts.push(createdThought);
+    createdThreads.push(createdThread);
   }
 
-  // create reactions
+  // create posts
   for (let i = 0; i < 100; i += 1) {
-    const reactionBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+    const postBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
 
     const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
     const { username } = createdUsers.ops[randomUserIndex];
 
-    const randomThoughtIndex = Math.floor(Math.random() * createdThoughts.length);
-    const { _id: thoughtId } = createdThoughts[randomThoughtIndex];
+    const randomThreadIndex = Math.floor(Math.random() * createdThreads.length);
+    const { _id: threadId } = createdThreads[randomThreadIndex];
 
-    await Thought.updateOne(
-      { _id: thoughtId },
-      { $push: { reactions: { reactionBody, username } } },
+    await Thread.updateOne(
+      { _id: threadId },
+      { $push: { posts: { postBody, username } } },
       { runValidators: true }
     );
   }
