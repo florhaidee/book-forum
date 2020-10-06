@@ -11,3 +11,78 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Styles for Book */
+
+.Page {
+  display: flex;
+  height: 100%;
+  background-color: rgba(247, 238, 223, 0.733);
+  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pageHeader{
+  margin: 1rem;
+}
+.pageFooter, .pageText{
+  justify-content: flex-end;
+  border-top: 1px solid  rgba(138, 130, 118, 0.616);
+  margin: 0.5rem;
+}
+.pageText{
+  height: 50%;
+  text-align: justify;
+  margin: 0.5rem;
+}
+.pageImage {
+  display: flex;
+  margin: 0.5rem;
+  width: 90%;
+  height: 30%;
+  align-content: center;
+  justify-content: center;
+}
+.pageImage img{
+  width: 50%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  align-self: center;
+}
+.pageFooter{
+  height: 15%;
+}
+
+/*Styles for Page Cover */
+.pageCover{
+  display: flex;
+  height: 100%;
+  background-color: rgb(224, 207, 184);
+  color:  rgb(120, 94, 58);
+  border: solid 1px rgb(153, 132, 102);
+  box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pageCover h2{
+  text-align: center;
+  padding-top: 50%;
+  padding-left: 30%;
+  font-size: 210%;
+}
+
+.hard { 
+  display: flex;
+  height: 100%;
+  background-color: rgb(242, 232, 217);
+  border: solid 1px rgb(153, 132, 102);
+  background-image: url(../src/utils/images/background.jpg);
+  background-size: cover;
+}
