@@ -20,6 +20,10 @@ const threadSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		genre: {
+			type: String,
+			required: true,
+		},
 		posts: [postSchema],
 	},
 	{
