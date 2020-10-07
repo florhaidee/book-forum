@@ -20,10 +20,10 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    thoughts: [
+    threads: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
+        ref: 'Thread'
       }
     ],
     friends: [
@@ -57,6 +57,10 @@ userSchema.methods.isCorrectPassword = async function(password) {
 
 userSchema.virtual('friendCount').get(function() {
   return this.friends.length;
+});
+
+userSchema.virtual('threadCount').get(function () {
+	return this.threads.length;
 });
 
 const User = model('User', userSchema);
