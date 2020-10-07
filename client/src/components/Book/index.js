@@ -38,6 +38,7 @@ const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do ei
 
 function Book(props) {
   return (
+    <div className="container">
     <div className="bookContainer">
       <HTMLFlipBook width={500} height={600}>
         <PageCover></PageCover>
@@ -50,6 +51,7 @@ function Book(props) {
         <PageContent></PageContent>
         <PageCover> </PageCover>
       </HTMLFlipBook>
+    </div>
     </div>
   );
 }

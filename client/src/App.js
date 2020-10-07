@@ -7,16 +7,15 @@ import store from './utils/State';
 import Book from './components/Book';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Header from './components/Header';
 
 function App() {
 	return (
 		<ApolloProvider client={client}>
 			<Provider store={store}>
 				<Router>
-					<div>
-						<h1> Book Forum</h1>
-					</div>
-					{/* Header/Nav */}
+					<Header />
+                    <Book />
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route component={NotFound} />
