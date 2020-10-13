@@ -1,35 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLazyQuery } from '@apollo/react-hooks';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 
-import { QUERY_THREADS } from '../../utils/queries';
+import { useDispatch } from 'react-redux';
+
+import { UPDATE_GENRE, UPDATE_THREADTEXT } from '../../utils/reducers';
 
 const NavBar = () => {
-	const [searchTerm, setSearchTerm] = useState('');
-	const [genre, setGenre] = useState('Fantasy');
-
-	const [searchThreads, { data }] = useLazyQuery(QUERY_THREADS);
-
-	const searchHandler = (e) => {
-		e.preventDefault();
-
-		if (genre && searchTerm) {
-			searchThreads({
-				variables: { genre, searchTerm },
-			});
-			console.log(data?.threads);
-		}
-	};
+	const dispatch = useDispatch();
 
 	const handleSearchTermChange = (event) => {
-		setSearchTerm(event.target.value);
+		dispatch(UPDATE_THREADTEXT(event.target.value));
 	};
 
 	const handleGenreChange = (event) => {
-		setGenre(event.target.value);
+		dispatch(UPDATE_GENRE(event.target.value));
 	};
 
 	return (
