@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLazyQuery } from '@apollo/react-hooks';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 
+import { QUERY_THREADS } from '../../utils/queries';
+
 const NavBar = () => {
+	const [searchTerm, setSearchTerm] = useState('');
+	const [genre, setGenre] = useState('Fantasy');
+
+	const [searchThreads, { data }] = useLazyQuery(QUERY_THREADS);
+
+	const searchHandler = (e) => {
+		e.preventDefault();
+
+		if (genre && searchTerm) {
+			searchThreads({
+				variables: { genre, searchTerm },
+			});
+			console.log(data?.threads);
+		}
+	};
+
+	const handleSearchTermChange = (event) => {
+		setSearchTerm(event.target.value);
+	};
+
+	const handleGenreChange = (event) => {
+		setGenre(event.target.value);
+	};
+
 	return (
 		<Navbar bg='dark' expand='lg' variant='dark'>
 			<Navbar.Brand>
@@ -41,17 +68,35 @@ const NavBar = () => {
 					</>
 				)}
 			</Nav>
-			<Navbar.Toggle />
+			<Navbar.Toggle aria-controls='basic-navbar-nav' />
 			<Navbar.Collapse id='basic-navbar-nav'>
 				<Form inline className='ml-auto'>
 					<FormControl
+						size='sm'
 						type='text'
 						placeholder='Search'
 						className='ml-auto my-2'
+						onChange={handleSearchTermChange}
 					/>
-					<Button variant='outline-success' className='ml-sm-2'>
-						Search
-					</Button>
+					<FormControl
+						as='select'
+						size='sm'
+						className='ml-2 my-2'
+						onChange={handleGenreChange}
+					>
+						<option>Fantasy</option>
+						<option>Adventure</option>
+						<option>Romance</option>
+						<option>Mystery</option>
+					</FormControl>
+					<LinkContainer to='/thread'>
+						<Nav.Item
+							className='py-1 px-2 ml-sm-2 text-light border border-success border-radius rounded'
+							role='button'
+						>
+							Search
+						</Nav.Item>
+					</LinkContainer>
 				</Form>
 			</Navbar.Collapse>
 		</Navbar>
