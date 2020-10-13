@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
@@ -10,13 +10,20 @@ import { UPDATE_GENRE, UPDATE_THREADTEXT } from '../../utils/reducers';
 
 const NavBar = () => {
 	const dispatch = useDispatch();
+	const [genre, setGenre] = useState('Fantasy');
+	const [text, setText] = useState('');
 
 	const handleSearchTermChange = (event) => {
-		dispatch(UPDATE_THREADTEXT(event.target.value));
+		setText(event.target.value);
 	};
 
 	const handleGenreChange = (event) => {
-		dispatch(UPDATE_GENRE(event.target.value));
+		setGenre(event.target.value);
+	};
+
+	const updateGlobalState = () => {
+		dispatch(UPDATE_GENRE(genre));
+		dispatch(UPDATE_THREADTEXT(text));
 	};
 
 	return (
@@ -76,7 +83,7 @@ const NavBar = () => {
 						<option>Romance</option>
 						<option>Mystery</option>
 					</FormControl>
-					<LinkContainer to='/threads'>
+					<LinkContainer to='/threads' onClick={updateGlobalState}>
 						<Nav.Item
 							className='py-1 px-2 ml-sm-2 text-light border border-success border-radius rounded'
 							role='button'
@@ -88,6 +95,6 @@ const NavBar = () => {
 			</Navbar.Collapse>
 		</Navbar>
 	);
-};
+};;
 
 export default NavBar;
