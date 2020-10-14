@@ -2,6 +2,8 @@ import React from 'react';
 import HTMLFlipBook from "react-pageflip";
 import image from "../../utils/images/fantasy-book.jpg"
 import background from "../../utils/images/background.jpg"
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_THREADS } from '../../utils/queries';
 
 const PageCover = React.forwardRef((props, ref) => {
   return (
@@ -18,36 +20,47 @@ const PageContent = React.forwardRef((props, ref) => {
     <div className="Page" ref={ref} data-density="hard">
       <div className="pageCover">
         <h2>{props.children}</h2>
+        <div className="pageImage"><img src={image} alt="category"/></div>
       </div>
     </div>
   );
 });
 
 const Page = React.forwardRef((props, ref) => {
+  console.log(props)
   return (
     <div className="Page" ref={ref}>
-      <h2 className="pageHeader">Page Header</h2>
-      <div className="pageImage"><img src={image} alt="fantasy-category"/></div>
-      <div className="pageText">{props.children}</div>
-      <div className="pageFooter">Page number: {props.number}</div>
+      <h2 className="pageHeader">{props.children.genre}</h2>
+      <div className="pageText">{props.children.threadText}</div>
+      <div className="pageFooter">Page number: {props.number} - {props.children.createdAt}  - Created by: {props.children.username}</div>
     </div>
   );
 });
 
-const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-function Book(props) {
+function Book({genre}) {
+  
+  const { loading, data } = useQuery(QUERY_THREADS, {
+    variables: { genre: genre }
+  });
+
+  const threads = data?.threads || {};
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="container">
     <div className="bookContainer">
       <HTMLFlipBook width={500} height={600}>
         <PageCover></PageCover>
-        <PageContent>BOOK TITLE</PageContent>
-        <Page number="1">{text}</Page>
-        <Page number="2">{text}</Page>
-        <Page number="3">{text}</Page>
-        <Page number="4">{text}</Page>
-        <Page number="5">{text}</Page>
+        <PageContent>{genre}</PageContent>
+        {threads.map( (thread, i) => {
+          return (
+            <Page number={i}>{ thread }</Page>
+          )
+        })}
         <PageContent></PageContent>
         <PageCover> </PageCover>
       </HTMLFlipBook>

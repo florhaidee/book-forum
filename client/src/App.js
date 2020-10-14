@@ -15,9 +15,9 @@ function App() {
 			<Provider store={store}>
 				<Router>
 					<Header />
-                    <Book />
 					<Switch>
 						<Route exact path='/' component={Home} />
+						<Route exact path='/genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
 					{/* Footer */}

@@ -46,7 +46,7 @@ db.once('open', async () => {
 
     const genre = genres[Math.floor(Math.random() * genres.length)];
 
-	const createdThread = await Thread.create({ threadText, username, genre });
+	  const createdThread = await Thread.create({ threadText, username, genre });
 
     const updatedUser = await User.updateOne(
       { _id: userId },

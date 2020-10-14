@@ -37,8 +37,9 @@ code {
   margin: 0.5rem;
 }
 .pageText{
-  height: 50%;
+  height: 75%;
   text-align: justify;
+  justify-content: center;
   margin: 0.5rem;
 }
 .pageImage {
