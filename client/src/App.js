@@ -19,6 +19,7 @@ function App() {
 					{/* <Book /> */}
 					<Switch>
 						<Route exact path='/' component={Home} />
+						<Route exact path='/threads/:genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
 					{/* Footer */}
