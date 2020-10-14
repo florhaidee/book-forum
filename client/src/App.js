@@ -7,15 +7,16 @@ import store from './utils/State';
 import Book from './components/Book';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import Header from './components/Header';
+import Login from './components/LoginForm';
+import NavBar from './components/NavBar';
 
 function App() {
 	return (
 		<ApolloProvider client={client}>
 			<Provider store={store}>
 				<Router>
-					<Header />
-                    <Book />
+					<NavBar />
+					{/* <Book /> */}
 					<Switch>
 						<Route exact path='/' component={Home} />
 						<Route component={NotFound} />

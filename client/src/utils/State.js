@@ -1,8 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import {} from './reducers'
+import rootReducer from './reducers';
 
 export default configureStore({
-	reducer: {
-		/* name: importedReducer */
-	},
+	reducer: rootReducer,
 });

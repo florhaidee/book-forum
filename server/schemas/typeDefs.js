@@ -8,8 +8,8 @@ const typeDefs = gql`
 		email: String
 		friendCount: Int
 		threads: [Thread]
-    friends: [User]
-    threadCount: Int
+		friends: [User]
+		threadCount: Int
 	}
 
 	type Thread {
@@ -33,7 +33,7 @@ const typeDefs = gql`
 		me: User
 		users: [User]
 		user(username: String!): User
-		threads(username: String, genre: String): [Thread]
+		threads(username: String, genre: String, searchTerm: String): [Thread]
 		thread(_id: ID!): Thread
 	}
 
