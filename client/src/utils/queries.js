@@ -6,9 +6,7 @@ export const QUERY_ME = gql`
 		me {
 			_id
 			username
-			email
-			threads {
-                _id
+			email {
 				threadText
 				createdAt
 				username
@@ -20,7 +18,7 @@ export const QUERY_ME = gql`
 				_id
 				username
 				threads {
-                    _id
+					_id
 					threadText
 					createdAt
 					username
@@ -86,16 +84,16 @@ export const QUERY_USER = gql`
 `;
 // threads(username: String): [Thread]
 export const QUERY_THREADS = gql`
-	query threads($username: String, $genre: String) {
-		threads(username: $username, genre: $genre) {
-            _id
+	query threads($username: String, $genre: String, $searchTerm: String) {
+		threads(username: $username, genre: $genre, searchTerm: $searchTerm) {
+			_id
 			threadText
 			createdAt
 			username
 			genre
 			postCount
 			posts {
-                _id
+				_id
 				postBody
 				createdAt
 				username

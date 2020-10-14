@@ -1,24 +1,5 @@
-// import and export reducers from reducers folder
+import { threadSlice } from './threadSlice';
 
-// REDUX REDUCER TEMPLATE BELOW
-// import { createSlice } from '@reduxjs/toolkit';
+export const { UPDATE_GENRE, UPDATE_THREADTEXT } = threadSlice.actions;
 
-// const cartSlice = createSlice({
-// 	name: 'cart',
-// 	initialState: {
-// 		cartItems: [],
-// 		cartOpen: false,
-// 	},
-// 	reducers: {
-// 		ADD_TO_CART: (state, action) => {
-// 			state.cartOpen = true;
-// 			state.cartItems.push(action.payload.cartItems);
-// 		},
-// 	},
-// });
-
-// export const {
-// 	ADD_TO_CART,
-// } = cartSlice.actions;
-
-// export default cartSlice.reducer;
+export default { thread: threadSlice.reducer };
