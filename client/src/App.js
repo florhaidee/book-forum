@@ -8,6 +8,7 @@ import Book from './components/Book';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Login from './components/LoginForm';
+import Signup from './pages/Signup';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
 					{/* <Book /> */}
 					<Switch>
 						<Route exact path='/' component={Home} />
+						<Route exact path='/login' component={Login} />
+						<Route exact path='/signup' component={Signup} />
 						<Route exact path='/threads/:genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
