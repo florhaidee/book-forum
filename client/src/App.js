@@ -26,7 +26,6 @@ function App() {
 						<Route exact path='/threads/:genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
-					{/* Footer */}
 				</Router>
 			</Provider>
 		</ApolloProvider>

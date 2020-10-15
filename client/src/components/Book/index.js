@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { useSelector } from 'react-redux';
 import HTMLFlipBook from "react-pageflip";
@@ -54,27 +54,28 @@ const PageContent = React.forwardRef((props, ref) => {
 });
 
 const Page = React.forwardRef((props, ref) => {
-  console.log(props)
- 
-  return (
-    <div className="Page" ref={ref}>
-      <h2 className="pageHeader">{props.children.genre}</h2>
-      <div className="pageText">{props.children.threadText}
-      { props.children.posts.length > 0 
-        ? <h4>Posts: </h4>
-        : <h5>No Posts Yet. </h5>
-      }
-      { props.children.posts.length > 0 &&
-        props.children.posts.map((post) => {
-          return (
-            <p className="postText">{post.postBody}</p>
-          )
-        })
-      }
-      </div>
-      <div className="pageFooter">Page number: {props.number + 2} - {props.children.createdAt}  - Created by: {props.children.username}</div>
-    </div>
-  );
+	return (
+		<div className='Page' ref={ref}>
+			<h2 className='pageHeader'>{props.children.genre}</h2>
+			<div className='pageText'>
+				{props.children.threadText}
+				{props.children.posts.length > 0 ? (
+					<h4>Posts: </h4>
+				) : (
+					<h5>No Posts Yet. </h5>
+				)}
+				{props.children.posts.length > 0 &&
+					props.children.posts.map((post) => {
+						return <p className='postText'>{post.postBody}</p>;
+					})}
+			</div>
+      <Link to={`/thread/${props.children._id}`}>See the Conversation!</Link>
+			<div className='pageFooter'>
+				Page number: {props.number + 2} - {props.children.createdAt} -
+				Created by: {props.children.username}
+			</div>
+		</div>
+	);
 });
 
 
@@ -89,12 +90,10 @@ function Book() {
   });
 
   const threads = data?.threads || {};
-  console.log(threads)
 
   if (loading) {
-    return <div>Loading...</div>;
+		return <div>Loading...</div>;
   }
-  console.log(genre)
   return (
     <div className="container">
       <div className="bookContainer">
