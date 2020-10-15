@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import { useSelector } from 'react-redux';
 import HTMLFlipBook from "react-pageflip";
-import fantasy from "../../utils/images/fantasy-book.jpg"
-import adventure from "../../utils/images/adventure.jpg"
-import romance from "../../utils/images/heart-book.jpg"
-import mystery from "../../utils/images/mystery-book.png"
+import Fantasy from "../../utils/images/fantasy-book.jpg"
+import Adventure from "../../utils/images/adventure.jpg"
+import Romance from "../../utils/images/heart-book.jpg"
+import Mystery from "../../utils/images/mystery-book.png"
 import { QUERY_THREADS } from '../../utils/queries';
 
 
@@ -21,33 +22,32 @@ const PageCover = React.forwardRef((props, ref) => {
 
 const PageContent = React.forwardRef((props, ref) => {
   console.log("genre pagecontent", props.children)
-  const genre = props.children;
   return (
     <div className="Page" ref={ref} data-density="hard">
       <div className="pageCover">
         {(() => {
-          switch (genre) {
-            case 'fantasy':
+          switch (props.children) {
+            case 'Fantasy':
               return(
-                <span><img src={fantasy} alt="category"/></span>
+                <span><img src={Fantasy} alt="category"/></span>
               )
-            case 'adventure':
+            case 'Adventure':
               return(
-                <span><img src={adventure} alt="category"/></span>
+                <span><img src={Adventure} alt="category"/></span>
               )
-            case 'romance':
+            case 'Romance':
               return(
-                <span><img src={romance} alt="category"/></span>
+                <span><img src={Romance} alt="category"/></span>
               )
-            case 'mystery':
+            case 'Mystery':
               return(
-                <span><img src={mystery} alt="category"/></span>
+                <span><img src={Mystery} alt="category"/></span>
               )
             default:
-              return ("")
+              return (<p></p>)
           }
         })()}
-        <h2>{genre}</h2>
+        <h2>{props.children}</h2>
       </div>
     </div>
   )
@@ -80,8 +80,10 @@ const Page = React.forwardRef((props, ref) => {
 
 function Book() {
 
-  const { genre: genre } = useParams();
-
+  //console.log(state)
+  let { genre: genre} = useParams();
+ // genre = genre.charAt(0).toUpperCase() + genre.slice(1);
+ // const searchText = useSelector((state) => state.thread.threadText);
   const { loading, data } = useQuery(QUERY_THREADS, {
     variables: { genre: genre},
   });
@@ -94,7 +96,6 @@ function Book() {
   }
   console.log(genre)
   return (
-
     <div className="container">
       <div className="bookContainer">
         <HTMLFlipBook width={500} height={600}>
@@ -102,7 +103,7 @@ function Book() {
           <PageContent>{genre}</PageContent>
           {threads.map( (thread, i) => {
             return (
-              <Page number={i}>{ thread }</Page>
+              <Page number={i} key={thread._id}>{ thread }</Page>
             )
           })}
           <PageContent></PageContent>
