@@ -1,9 +1,13 @@
 import React from 'react';
-import HTMLFlipBook from "react-pageflip";
-import image from "../../utils/images/fantasy-book.jpg"
-import background from "../../utils/images/background.jpg"
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
+import HTMLFlipBook from "react-pageflip";
+import fantasy from "../../utils/images/fantasy-book.jpg"
+import adventure from "../../utils/images/adventure.jpg"
+import romance from "../../utils/images/heart-book.jpg"
+import mystery from "../../utils/images/mystery-book.png"
 import { QUERY_THREADS } from '../../utils/queries';
+
 
 const PageCover = React.forwardRef((props, ref) => {
   return (
@@ -16,14 +20,37 @@ const PageCover = React.forwardRef((props, ref) => {
 });
 
 const PageContent = React.forwardRef((props, ref) => {
+  console.log("genre pagecontent", props.children)
+  const genre = props.children;
   return (
     <div className="Page" ref={ref} data-density="hard">
       <div className="pageCover">
-        <span><img src={image} alt="category"/></span>
-        <h2>{props.children}</h2>
+        {(() => {
+          switch (genre) {
+            case 'fantasy':
+              return(
+                <span><img src={fantasy} alt="category"/></span>
+              )
+            case 'adventure':
+              return(
+                <span><img src={adventure} alt="category"/></span>
+              )
+            case 'romance':
+              return(
+                <span><img src={romance} alt="category"/></span>
+              )
+            case 'mystery':
+              return(
+                <span><img src={mystery} alt="category"/></span>
+              )
+            default:
+              return ("")
+          }
+        })()}
+        <h2>{genre}</h2>
       </div>
     </div>
-  );
+  )
 });
 
 const Page = React.forwardRef((props, ref) => {
@@ -51,19 +78,23 @@ const Page = React.forwardRef((props, ref) => {
 });
 
 
-function Book({genre}) {
-  
+function Book() {
+
+  const { genre: genre } = useParams();
+
   const { loading, data } = useQuery(QUERY_THREADS, {
-    variables: { genre: genre }
+    variables: { genre: genre},
   });
 
   const threads = data?.threads || {};
+  console.log(threads)
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log(genre)
   return (
+
     <div className="container">
       <div className="bookContainer">
         <HTMLFlipBook width={500} height={600}>

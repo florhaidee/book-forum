@@ -73,8 +73,11 @@ code {
 
 .pageCover h2 {
   padding-top: 1%;
-  padding-left: 38%;
   font-size: 210%;
+  align-self: center;
+}
+.pageCover h2::first-letter{
+  text-transform: capitalize;
 }
 .pageCover span{
   margin-left: 15%;

@@ -6,38 +6,34 @@ import '../index.css'
 
 
 const Home = () => {
-	const genres = ['Fantasy', 'Adventure', 'Romance', 'Mystery'];
-	const genre = "Fantasy";
 	return (
 		<main>
-			<div class="container-fluid">
-  
-    <div class="col">
-	<Link to="/threads/fantasy">  
-	<img src="images/fantasy-book.jpg"/>
-	
-	</Link> 
-    </div>
-
-	<div class="col">
-	<Link to="/threads/adventure">  
-	<img src="images/adventure.jpg" />
-	</Link> 
-    </div>
-	
-
-    <div class="col">
-	<Link to="/threads/romance">  
-	<img src="images/heart-book.jpg" />
-	</Link> 
-    </div>
-	<div class="col">
-	<Link to="/threads/mystery">  
-	<img src="images/mystery-book.png" />
-	</Link> 
-    </div>
-	</div>
-			
+			<div className="container-fluid">
+				{/*Fantasy*/}
+				<div class="col">
+					<Link to="/threads/fantasy">  
+					<img src="images/fantasy-book.jpg"/>
+					</Link> 
+				</div>
+				{/*Adventure*/}
+				<div class="col">
+					<Link to="/threads/adventure">  
+					<img src="images/adventure.jpg" />
+					</Link> 
+				</div>
+				{/*Romance*/}
+				<div class="col">
+					<Link to="/threads/romance">  
+					<img src="images/heart-book.jpg" />
+					</Link> 
+				</div>
+				{/*Mystery*/}
+				<div class="col">
+					<Link to="/threads/mystery">  
+					<img src="images/mystery-book.png" />
+					</Link> 
+				</div>
+			</div>	
 		</main>
 	);
 };

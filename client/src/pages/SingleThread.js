@@ -1,45 +1,28 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useLazyQuery } from '@apollo/client';
+
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_THREAD, QUERY_THREADS } from '../utils/queries';
-import PostList from '../components/PostList';
+import { QUERY_THREADS } from '../utils/queries';
 import { useSelector } from 'react-redux';
+import Book from '../components/Book';
+
+
 
 const SingleThread = props => {
-  const { id: threadId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_THREAD, {
-    variables: { id: threadId }
+  const state = useSelector((state) => state.thread);
+  const { loading, data } = useQuery(QUERY_THREADS, {
+    variables: state ,
   });
-
-  const thread = data?.thread || {};
+  const threads = data?.threads || [];
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const state = useSelector((state) => state.thread);
-  const { loading, data } = useQuery(QUERY_THREADS, {
-    variables: { state },
-  });
-  
-  const threads = data?.threads || [];
-
   return (
     <div>
-      <div className="card mb-3">
-        <p className="card-header">
-          <span style={{ fontWeight: 700 }} className="text-light">
-            {thread.username}
-          </span>{' '}
-          thread on {thread.createdAt}
-        </p>
-        <div className="card-body">
-          <p>{thread.threadText}</p>
-        </div>
-      </div>
-
-      {thread.postCount > 0 && <PostList posts={thread.posts} />}
+      <Book state = {state}/>
     </div>
   );
 };
