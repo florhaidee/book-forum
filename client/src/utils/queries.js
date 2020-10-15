@@ -6,14 +6,14 @@ export const QUERY_ME = gql`
 		me {
 			_id
 			username
-			email {
+			threadCount
+			threads {
+				_id
 				threadText
 				createdAt
 				username
 				genre
-				postCount
 			}
-			threadCount
 			friends {
 				_id
 				username

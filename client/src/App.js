@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import Login from './components/LoginForm';
 import Signup from './pages/Signup';
 import NavBar from './components/NavBar';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 						<Route exact path='/' component={Home} />
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/signup' component={Signup} />
+						<Route exact path='/dashboard' component={Dashboard} />
 						<Route exact path='/threads/:genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
