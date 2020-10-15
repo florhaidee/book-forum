@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import HTMLFlipBook from "react-pageflip";
 import fantasy from "../../utils/images/fantasy-book.jpg"
@@ -20,61 +20,69 @@ const PageCover = React.forwardRef((props, ref) => {
 });
 
 const PageContent = React.forwardRef((props, ref) => {
-  console.log("genre pagecontent", props.children)
-  const genre = props.children;
-  return (
-    <div className="Page" ref={ref} data-density="hard">
-      <div className="pageCover">
-        {(() => {
-          switch (genre) {
-            case 'fantasy':
-              return(
-                <span><img src={fantasy} alt="category"/></span>
-              )
-            case 'adventure':
-              return(
-                <span><img src={adventure} alt="category"/></span>
-              )
-            case 'romance':
-              return(
-                <span><img src={romance} alt="category"/></span>
-              )
-            case 'mystery':
-              return(
-                <span><img src={mystery} alt="category"/></span>
-              )
-            default:
-              return ("")
-          }
-        })()}
-        <h2>{genre}</h2>
-      </div>
-    </div>
-  )
+	const genre = props.children;
+	return (
+		<div className='Page' ref={ref} data-density='hard'>
+			<div className='pageCover'>
+				{(() => {
+					switch (genre) {
+						case 'fantasy':
+							return (
+								<span>
+									<img src={fantasy} alt='category' />
+								</span>
+							);
+						case 'adventure':
+							return (
+								<span>
+									<img src={adventure} alt='category' />
+								</span>
+							);
+						case 'romance':
+							return (
+								<span>
+									<img src={romance} alt='category' />
+								</span>
+							);
+						case 'mystery':
+							return (
+								<span>
+									<img src={mystery} alt='category' />
+								</span>
+							);
+						default:
+							return '';
+					}
+				})()}
+				<h2>{genre}</h2>
+			</div>
+		</div>
+	);
 });
 
 const Page = React.forwardRef((props, ref) => {
-  console.log(props)
- 
-  return (
-    <div className="Page" ref={ref}>
-      <h2 className="pageHeader">{props.children.genre}</h2>
-      <div className="pageText">{props.children.threadText}
-      { props.children.posts.length > 0 
-        ? <h4>Posts: </h4>
-        : <h5>No Posts Yet. </h5>
-      }
-      { props.children.posts.length > 0 &&
-        props.children.posts.map((post) => {
-          return (
-            <p className="postText">{post.postBody}</p>
-          )
-        })
-      }
-      </div>
-      <div className="pageFooter">Page number: {props.number + 2} - {props.children.createdAt}  - Created by: {props.children.username}</div>
-    </div>
-  );
+	return (
+		<div className='Page' ref={ref}>
+			<h2 className='pageHeader'>{props.children.genre}</h2>
+			<div className='pageText'>
+				{props.children.threadText}
+				{props.children.posts.length > 0 ? (
+					<h4>Posts: </h4>
+				) : (
+					<h5>No Posts Yet. </h5>
+				)}
+				{props.children.posts.length > 0 &&
+					props.children.posts.map((post) => {
+						return <p className='postText'>{post.postBody}</p>;
+					})}
+			</div>
+      <Link to={`/thread/${props.children._id}`}>See the Conversation!</Link>
+			<div className='pageFooter'>
+				Page number: {props.number + 2} - {props.children.createdAt} -
+				Created by: {props.children.username}
+			</div>
+		</div>
+	);
 });
 
 
@@ -87,12 +95,10 @@ function Book() {
   });
 
   const threads = data?.threads || {};
-  console.log(threads)
 
   if (loading) {
-    return <div>Loading...</div>;
+		return <div>Loading...</div>;
   }
-  console.log(genre)
   return (
 
     <div className="container">

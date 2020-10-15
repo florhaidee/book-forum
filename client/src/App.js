@@ -19,11 +19,10 @@ function App() {
 					<NavBar />
 					<Switch>
 						<Route exact path='/' component={Home} />
-						<Route exact path='/threads' component={SingleThread} />
+						<Route exact path='/thread/:id' component={SingleThread} />
 						<Route exact path='/threads/:genre' component={Book} />
 						<Route component={NotFound} />
 					</Switch>
-					{/* Footer */}
 				</Router>
 			</Provider>
 		</ApolloProvider>

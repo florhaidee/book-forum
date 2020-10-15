@@ -11,29 +11,29 @@ const Home = () => {
 			<div className="container-fluid">
 				{/*Fantasy*/}
 				<div class="col">
-					<Link to="/threads/fantasy">  
+					<Link to="/threads/Fantasy">
 					<img src="images/fantasy-book.jpg"/>
-					</Link> 
+					</Link>
 				</div>
 				{/*Adventure*/}
 				<div class="col">
-					<Link to="/threads/adventure">  
+					<Link to="/threads/Adventure">
 					<img src="images/adventure.jpg" />
-					</Link> 
+					</Link>
 				</div>
 				{/*Romance*/}
 				<div class="col">
-					<Link to="/threads/romance">  
+					<Link to="/threads/Romance">
 					<img src="images/heart-book.jpg" />
-					</Link> 
+					</Link>
 				</div>
 				{/*Mystery*/}
 				<div class="col">
-					<Link to="/threads/mystery">  
+					<Link to="/threads/Mystery">
 					<img src="images/mystery-book.png" />
-					</Link> 
+					</Link>
 				</div>
-			</div>	
+			</div>
 		</main>
 	);
 };
