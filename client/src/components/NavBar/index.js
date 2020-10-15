@@ -49,7 +49,7 @@ const NavBar = () => {
 					</>
 				) : (
 					<>
-						<LinkContainer to='/logout'>
+						<LinkContainer to='/#' onClick={Auth.logout}>
 							<Nav.Item className='text-light mx-2' role='button'>
 								Logout
 							</Nav.Item>
