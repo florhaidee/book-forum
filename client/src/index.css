@@ -15,8 +15,8 @@ code {
 .container {
   width: 85%;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 5% auto;
+
 }
 
 /*Styles for Book */
@@ -41,6 +41,11 @@ code {
   text-align: justify;
   justify-content: center;
   margin: 0.5rem;
+  font-size: 1.5rem;
+}
+.pageText p{
+ font-size: 1.2rem;
+ margin-left: 1rem;
 }
 .pageImage {
   display: flex;
@@ -50,14 +55,6 @@ code {
   align-content: center;
   justify-content: center;
 }
-.pageImage img{
-  width: 50%;
-  height: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  align-self: center;
-}
 .pageFooter{
   height: 15%;
 }
@@ -65,20 +62,30 @@ code {
 /*Styles for Page Cover */
 .pageCover{
   display: flex;
+  flex-direction: column;
   height: 100%;
   background-color: rgb(224, 207, 184);
   color:  rgb(120, 94, 58);
   border: solid 1px rgb(153, 132, 102);
   box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+  justify-content: center;
 }
 
-.pageCover h2{
-  text-align: center;
-  padding-top: 50%;
-  padding-left: 30%;
+.pageCover h2 {
+  padding-top: 1%;
+  padding-left: 38%;
   font-size: 210%;
 }
-
+.pageCover span{
+  margin-left: 15%;
+}
+.pageCover span img{
+  width: 80%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 5px;
+}
 .hard { 
   display: flex;
   height: 100%;

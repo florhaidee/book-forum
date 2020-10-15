@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_THREAD } from '../utils/queries';
+import { QUERY_THREAD, QUERY_THREADS } from '../utils/queries';
 import PostList from '../components/PostList';
+import { useSelector } from 'react-redux';
 
 const SingleThread = props => {
   const { id: threadId } = useParams();
@@ -16,6 +17,13 @@ const SingleThread = props => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const state = useSelector((state) => state.thread);
+  const { loading, data } = useQuery(QUERY_THREADS, {
+    variables: { state },
+  });
+  
+  const threads = data?.threads || [];
 
   return (
     <div>

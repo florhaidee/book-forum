@@ -19,8 +19,8 @@ const PageContent = React.forwardRef((props, ref) => {
   return (
     <div className="Page" ref={ref} data-density="hard">
       <div className="pageCover">
+        <span><img src={image} alt="category"/></span>
         <h2>{props.children}</h2>
-        <div className="pageImage"><img src={image} alt="category"/></div>
       </div>
     </div>
   );
@@ -28,11 +28,24 @@ const PageContent = React.forwardRef((props, ref) => {
 
 const Page = React.forwardRef((props, ref) => {
   console.log(props)
+ 
   return (
     <div className="Page" ref={ref}>
       <h2 className="pageHeader">{props.children.genre}</h2>
-      <div className="pageText">{props.children.threadText}</div>
-      <div className="pageFooter">Page number: {props.number} - {props.children.createdAt}  - Created by: {props.children.username}</div>
+      <div className="pageText">{props.children.threadText}
+      { props.children.posts.length > 0 
+        ? <h4>Posts: </h4>
+        : <h5>No Posts Yet. </h5>
+      }
+      { props.children.posts.length > 0 &&
+        props.children.posts.map((post) => {
+          return (
+            <p className="postText">{post.postBody}</p>
+          )
+        })
+      }
+      </div>
+      <div className="pageFooter">Page number: {props.number + 2} - {props.children.createdAt}  - Created by: {props.children.username}</div>
     </div>
   );
 });
@@ -52,19 +65,19 @@ function Book({genre}) {
 
   return (
     <div className="container">
-    <div className="bookContainer">
-      <HTMLFlipBook width={500} height={600}>
-        <PageCover></PageCover>
-        <PageContent>{genre}</PageContent>
-        {threads.map( (thread, i) => {
-          return (
-            <Page number={i}>{ thread }</Page>
-          )
-        })}
-        <PageContent></PageContent>
-        <PageCover> </PageCover>
-      </HTMLFlipBook>
-    </div>
+      <div className="bookContainer">
+        <HTMLFlipBook width={500} height={600}>
+          <PageCover></PageCover>
+          <PageContent>{genre}</PageContent>
+          {threads.map( (thread, i) => {
+            return (
+              <Page number={i}>{ thread }</Page>
+            )
+          })}
+          <PageContent></PageContent>
+          <PageCover> </PageCover>
+        </HTMLFlipBook>
+      </div>
     </div>
   );
 }
