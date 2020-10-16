@@ -37,7 +37,7 @@ code {
   margin: 0.5rem;
 }
 .pageText{
-  height: 75%;
+  height: 70%;
   text-align: justify;
   justify-content: center;
   margin: 0.5rem;
@@ -96,5 +96,12 @@ code {
   border: solid 1px rgb(153, 132, 102);
   background-image: url(../src/utils/images/background.jpg);
   background-size: cover;
+}
+
+/* Style for Single Page */
+.singlePage {
+  display: flex;
+  margin: auto;
+  padding: 10px auto;
 }
 
