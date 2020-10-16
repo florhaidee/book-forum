@@ -37,14 +37,14 @@ code {
   margin: 0.5rem;
 }
 .pageText{
-  height: 70%;
+  height: 78%;
   text-align: justify;
   justify-content: center;
   margin: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
-.pageText p{
- font-size: 1.2rem;
+.pageText p, .Page a{
+ font-size: 1rem;
  margin-left: 1rem;
 }
 .pageImage {
@@ -101,9 +101,9 @@ code {
 
 /* Style for Single Page */
 .singlePage {
-  display: flex;
-  margin: auto;
-  padding: 10px auto;
+  width: 100%;
+  margin: 1% auto;
+  align-self: center;
 }
 
 .col {
@@ -129,15 +129,15 @@ code {
   grid-row-gap: 150px;
 }
 
-  .photo{
-    height: 500px;
-    width: 500px;
-    padding:20px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+.photo{
+  height: 500px;
+  width: 500px;
+  padding:20px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
 .container-images {
   justify-content: center;
@@ -153,3 +153,73 @@ code {
   color: white;
 }
 
+@media only screen and (max-width: 470px) {
+  .container {
+    width: 100%;
+    margin: 1% auto;
+  }
+  .pageHeader {
+    margin: 1%;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  h4, h5 {
+    font-size: .8rem;
+  }
+  .pageText{
+    text-align: justify;
+    justify-content: center;
+    margin: 0.2rem;
+    font-size: .8rem;
+  }
+  .pageText p, a, .pageFooter{
+   font-size: .8rem;
+   margin-left: 1rem;
+  }
+  .postText {
+    margin: 1%;
+  }
+
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
+    margin: 1% auto;
+  }
+  .Page {
+    padding: 1% auto;
+  }
+  .singlePage{
+    padding-left: 1.5%;
+  }
+  .pageHeader {
+    margin: 1%;
+  }
+  h2 {
+    font-size: 1rem;
+  }
+  h4, h5 {
+    font-size: .8rem;
+  }
+  .pageText{
+    text-align: justify;
+    justify-content: center;
+    margin: 0.2rem;
+    font-size: .8rem;
+    height: 70%;
+  }
+  .pageText p, .Page a, .pageFooter{
+   font-size: .8rem;
+   margin-left: 1rem;
+  }
+  .postText {
+    margin: 1%;
+  }
+
+  button {
+    font-size: .8rem;
+  }
+
+}
