@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { useParams } from 'react-router-dom';
 
-import { QUERY_THREAD } from '../utils/queries';
-import { ADD_POST } from '../utils/mutations';
+import { QUERY_THREAD } from '../../utils/queries';
+import { ADD_POST } from '../../utils/mutations';
 
 const AddPostForm = () => {
 	const { id } = useParams();
@@ -15,9 +16,10 @@ const AddPostForm = () => {
 				query: QUERY_THREAD,
 				variables: id,
 			});
-			// prepend the newest thread to the front of the array
+			// prepend the newest post to the front of the array
 			cache.writeQuery({
 				query: QUERY_THREAD,
+				variables: id,
 				data: {
 					thread: { ...thread, posts: [...thread.posts, addPost] },
 				},
@@ -37,7 +39,7 @@ const AddPostForm = () => {
 
 		try {
 			await addPost({
-				variables: { postBody },
+				variables: { threadId: id, postBody },
 			});
 
 			setText('');
@@ -58,7 +60,7 @@ const AddPostForm = () => {
 				onSubmit={handleFormSubmit}
 			>
 				<textarea
-					placeholder="Here's a new thread..."
+					placeholder="Here's a new post..."
 					value={postBody}
 					className='form-input col-12 col-md mx-2'
 					onChange={handleTextChange}

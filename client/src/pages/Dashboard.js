@@ -92,9 +92,11 @@ const Dashboard = () => {
 							key={_id}
 							className='row my-2 border border-dark p-2'
 						>
-							<div className='col-8'>{threadText}</div>
-							<div className='col-2'>{genre}</div>
-							<div className='col-2'>{createdAt}</div>
+							<div className='col-12 col-lg-8'>{threadText}</div>
+							<div className='col-12 col-lg-2'>
+								Genre: {genre}
+							</div>
+							<div className='col-12 col-lg-2'>{createdAt}</div>
 						</div>
 					))}
 				</div>

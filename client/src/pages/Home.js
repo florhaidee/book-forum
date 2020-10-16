@@ -7,38 +7,41 @@ import '../index.css';
 const Home = () => {
 	return (
 		<main>
-			<div class='container-fluid'>
-				<div class='container-images'>
-					<div class='col'>
+			<div className='container-fluid'>
+				<div className='container-images'>
+					<div className='col'>
 						<Link to='/threads/Fantasy'>
 							<img
 								className='photo'
 								src='images/fantasy-book.jpg'
+								alt='Fantasy'
 							/>
 						</Link>
 						<span>Fantasy</span>
 					</div>
 
-					<div class='col'>
+					<div className='col'>
 						<Link to='/threads/Adventure'>
-							<img className='photo' src='images/adventure.jpg' />
+							<img className='photo' src='images/adventure.jpg' alt='Adventure' />
 						</Link>
 					</div>
 
-					<div class='col'>
+					<div className='col'>
 						<Link to='/threads/Romance'>
 							<img
 								className='photo'
 								src='images/heart-book.jpg'
+								alt='Romance'
 							/>
 						</Link>
 						<span>Romance</span>
 					</div>
-					<div class='col'>
+					<div className='col'>
 						<Link to='/threads/Mystery'>
 							<img
 								className='photo'
 								src='images/mystery-book.png'
+								alt='Mystery'
 							/>
 						</Link>
 					</div>
