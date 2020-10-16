@@ -97,7 +97,13 @@ function Book() {
 	return (
 		<div className='container'>
 			<div className='bookContainer'>
-				<HTMLFlipBook width={500} height={600}>
+        <HTMLFlipBook width={600} 
+          height={800} 
+          size="stretch"
+          minWidth={315}
+          maxWidth={1000}
+          minHeight={600}
+          maxHeight={1533} >
 					<PageCover></PageCover>
 					<PageContent>{genre}</PageContent>
 					{threads.map((thread, i) => {

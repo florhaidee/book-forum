@@ -62,11 +62,11 @@ const AddPostForm = () => {
 				<textarea
 					placeholder="Here's a new post..."
 					value={postBody}
-					className='form-input col-12 col-md mx-2'
+					className='form-input col-12 col-md-12 mx-2'
 					onChange={handleTextChange}
 				></textarea>
 				<button
-					className='btn col-5 col-md-2 border border-dark mx-2'
+					className='btn col-5 col-md-12 border border-dark mx-2'
 					type='submit'
 				>
 					Submit

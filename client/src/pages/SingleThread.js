@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_THREAD } from '../utils/queries';
 import HTMLFlipBook from 'react-pageflip';
 import AddPostForm from '../components/AddPostForm';
-
+import {Container, Row, Col} from 'react-bootstrap'
 import Auth from '../utils/auth'
 
 const Page = React.forwardRef((props, ref) => {
@@ -12,7 +12,7 @@ const Page = React.forwardRef((props, ref) => {
 		<div className='Page' ref={ref}>
 			<h2 className='pageHeader'>{props.children.genre}</h2>
 			<div className='pageText'>
-				<div className='my-4'><h4>Original Post:</h4> {props.children.threadText}</div>
+				<div className='my-2 xs-2'><h4>Original Post:</h4> {props.children.threadText}</div>
 				{props.children.posts.length > 0 ? (
 					<h4>Posts: </h4>
 				) : (
@@ -21,15 +21,12 @@ const Page = React.forwardRef((props, ref) => {
 				{props.children.posts.length > 0 &&
 					props.children.posts.map((post) => {
 						return (
-
 							<div className='border border-warning my-1'>
-
 								<p className='postText '>{post.postBody}</p>
 										<p className='postText'>{post.username}
 											<span>  --  {post.createdAt}</span>
 										</p>
 								</div>
-
 						);
 					})}
 			</div>
@@ -57,14 +54,29 @@ const SingleThread = (props) => {
 	}
 
 	return (
-		<div className='SinglePage'>
-				<HTMLFlipBook width={700} height={800}>
-					<Page number={1} key={thread._id}>
-						{thread}
-					</Page>
-				</HTMLFlipBook>
-				{Auth.loggedIn() &&<AddPostForm />}
-		</div>
+    <Container>
+      <Row>
+        <Col>
+          <div className="singlePage">
+            <HTMLFlipBook 
+              width={600} 
+              height={800}
+              size="stretch"
+              minWidth={315}
+              maxWidth={1800}
+              minHeight={400}
+              maxHeight={1533} >
+              <Page number={1} key={thread._id}>
+                {thread}
+              </Page>
+            </HTMLFlipBook>
+          </div>
+        </Col>
+        <Col>
+          {Auth.loggedIn() &&<AddPostForm />}
+        </Col>
+      </Row>
+  </Container>
 	);
 };
 
