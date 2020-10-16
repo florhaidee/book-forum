@@ -1,39 +1,47 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-import '../index.css'
-
+import { Link } from 'react-router-dom';
+import '../index.css';
 
 const Home = () => {
 	return (
 		<main>
-			<div class="container-fluid">
-  
-    <div class="col">
-	<Link to="/threads/fantasy">  
-<img src="images/fantasy-book.jpg"/>
-	
-	</Link> 
-    </div>
+			<div class='container-fluid'>
+				<div class='container-images'>
+					<div class='col'>
+						<Link to='/threads/fantasy'>
+							<img
+								className='photo'
+								src='images/fantasy-book.jpg'
+							/>
+						</Link>
+						<span>Fantasy</span>
+					</div>
 
-	<div class="col">
-	<Link to="/threads/adventure">  
-	<img src="images/adventure.jpg" />
-	</Link> 
-    </div>
-	
+					<div class='col'>
+						<Link to='/threads/adventure'>
+							<img className='photo' src='images/adventure.jpg' />
+						</Link>
+					</div>
 
-    <div class="col">
-	<Link to="/threads/romance">  
-	<img src="images/heart-book.jpg" />
-	</Link> 
-    </div>
-	<div class="col">
-	<Link to="/threads/mystery">  
-	<img src="images/mystery-book.png" />
-	</Link> 
-    </div>
-	</div>
-			
+					<div class='col'>
+						<Link to='/threads/romance'>
+							<img
+								className='photo'
+								src='images/heart-book.jpg'
+							/>
+						</Link>
+						<span>Romance</span>
+					</div>
+					<div class='col'>
+						<Link to='/threads/mystery'>
+							<img
+								className='photo'
+								src='images/mystery-book.png'
+							/>
+						</Link>
+					</div>
+				</div>
+			</div>
 		</main>
 	);
 };

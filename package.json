@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.5.2",
+    "grid-styled": "^5.0.2",
     "if-env": "^1.0.4",
     "request": "^2.88.2"
   },
