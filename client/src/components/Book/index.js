@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import HTMLFlipBook from "react-pageflip";
 import Fantasy from "../../utils/images/fantasy-book.jpg"
 import Adventure from "../../utils/images/adventure.jpg"
@@ -58,7 +58,10 @@ const Page = React.forwardRef((props, ref) => {
 		<div className='Page' ref={ref}>
 			<h2 className='pageHeader'>{props.children.genre}</h2>
 			<div className='pageText'>
-				{props.children.threadText}
+        <div className='my-4'>
+          <h4>Original Post:</h4>
+          {props.children.threadText}
+        </div>
 				{props.children.posts.length > 0 ? (
 					<h4>Posts: </h4>
 				) : (
@@ -80,37 +83,36 @@ const Page = React.forwardRef((props, ref) => {
 
 
 function Book() {
+	// const searchText = useSelector((state) => state.thread.threadText);
+	const { genre } = useParams();
+	const { loading, data } = useQuery(QUERY_THREADS, {
+		variables: { genre: genre },
+	});
 
-  //console.log(state)
-  let { genre: genre} = useParams();
- // genre = genre.charAt(0).toUpperCase() + genre.slice(1);
- // const searchText = useSelector((state) => state.thread.threadText);
-  const { loading, data } = useQuery(QUERY_THREADS, {
-    variables: { genre: genre},
-  });
+	const threads = data?.threads || {};
 
-  const threads = data?.threads || {};
-
-  if (loading) {
+	if (loading) {
 		return <div>Loading...</div>;
-  }
-  return (
-    <div className="container">
-      <div className="bookContainer">
-        <HTMLFlipBook width={500} height={600}>
-          <PageCover></PageCover>
-          <PageContent>{genre}</PageContent>
-          {threads.map( (thread, i) => {
-            return (
-              <Page number={i} key={thread._id}>{ thread }</Page>
-            )
-          })}
-          <PageContent></PageContent>
-          <PageCover> </PageCover>
-        </HTMLFlipBook>
-      </div>
-    </div>
-  );
+	}
+	return (
+		<div className='container'>
+			<div className='bookContainer'>
+				<HTMLFlipBook width={500} height={600}>
+					<PageCover></PageCover>
+					<PageContent>{genre}</PageContent>
+					{threads.map((thread, i) => {
+						return (
+							<Page number={i} key={thread._id}>
+								{thread}
+							</Page>
+						);
+					})}
+					<PageContent></PageContent>
+					<PageCover> </PageCover>
+				</HTMLFlipBook>
+			</div>
+		</div>
+	);
 }
 
 export default Book;
