@@ -2,13 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
 
+
+
 const Home = () => {
 	return (
 		<main>
 			<div class='container-fluid'>
 				<div class='container-images'>
 					<div class='col'>
-						<Link to='/threads/fantasy'>
+						<Link to='/threads/Fantasy'>
 							<img
 								className='photo'
 								src='images/fantasy-book.jpg'
@@ -18,13 +20,13 @@ const Home = () => {
 					</div>
 
 					<div class='col'>
-						<Link to='/threads/adventure'>
+						<Link to='/threads/Adventure'>
 							<img className='photo' src='images/adventure.jpg' />
 						</Link>
 					</div>
 
 					<div class='col'>
-						<Link to='/threads/romance'>
+						<Link to='/threads/Romance'>
 							<img
 								className='photo'
 								src='images/heart-book.jpg'
@@ -33,7 +35,7 @@ const Home = () => {
 						<span>Romance</span>
 					</div>
 					<div class='col'>
-						<Link to='/threads/mystery'>
+						<Link to='/threads/Mystery'>
 							<img
 								className='photo'
 								src='images/mystery-book.png'
