@@ -78,7 +78,7 @@ code {
   font-size: 210%;
 }
 
-.hard { 
+.hard {
   display: flex;
   height: 100%;
   background-color: rgb(242, 232, 217);
@@ -112,6 +112,8 @@ code {
   grid-row: auto auto;
   grid-column-gap: 250px;
   grid-row-gap: 150px;
+}
+
   .photo{
     padding:20px;
     border-radius:10px;
@@ -120,8 +122,17 @@ code {
     justify-content:center;
   }
 
-}
-
 .container-images {
   justify-content: center;
+  position: relative
 }
+
+.container-images span {
+  position: absolute;
+  bottom: 10%;
+  left: 25%;
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+}
+
