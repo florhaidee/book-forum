@@ -89,6 +89,7 @@ code {
   border-radius: 4px;
   padding: 0 5px;
 }
+
 .hard { 
   display: flex;
   height: 100%;
@@ -103,5 +104,52 @@ code {
   display: flex;
   margin: auto;
   padding: 10px auto;
+}
+
+.col {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.col:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container-images {
+  justify-items: center;
+  margin: 100px auto;
+  width:700px;
+  height:700px;
+  display:grid;
+  grid-template-columns: auto auto;
+  grid-row: auto auto;
+  grid-column-gap: 250px;
+  grid-row-gap: 150px;
+}
+
+  .photo{
+    height: 500px;
+    width: 500px;
+    padding:20px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+.container-images {
+  justify-content: center;
+  position: relative
+}
+
+.container-images span {
+  position: absolute;
+  bottom: 10%;
+  left: 25%;
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
 }
 
