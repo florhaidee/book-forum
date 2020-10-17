@@ -1,13 +1,11 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-// import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import HTMLFlipBook from "react-pageflip";
 import Fantasy from "../../utils/images/fantasy-book.jpg"
 import Adventure from "../../utils/images/adventure.jpg"
 import Romance from "../../utils/images/heart-book.jpg"
 import Mystery from "../../utils/images/mystery-book.png"
-import { QUERY_THREADS } from '../../utils/queries';
+
 
 
 const PageCover = React.forwardRef((props, ref) => {
@@ -69,7 +67,7 @@ const Page = React.forwardRef((props, ref) => {
 				)}
 				{props.children.posts.length > 0 &&
 					props.children.posts.map((post) => {
-						return <p className='postText'>{post.postBody}</p>;
+						return <p className='postText' key={post._id}>{post.postBody}</p>;
 					})}
 			</div>
       <Link to={`/thread/${props.children._id}`}>See the Conversation!</Link>
@@ -82,18 +80,7 @@ const Page = React.forwardRef((props, ref) => {
 });
 
 
-function Book() {
-	// const searchText = useSelector((state) => state.thread.threadText);
-	const { genre } = useParams();
-	const { loading, data } = useQuery(QUERY_THREADS, {
-		variables: { genre: genre },
-	});
-
-	const threads = data?.threads || {};
-
-	if (loading) {
-		return <div>Loading...</div>;
-	}
+function Book({threads, genre}) {
 	return (
 		<div className='container'>
 			<div className='bookContainer'>
@@ -105,7 +92,10 @@ function Book() {
           minHeight={600}
           maxHeight={1533} >
 					<PageCover></PageCover>
-					<PageContent>{genre}</PageContent>
+          { genre 
+          ? <PageContent>{genre}</PageContent> 
+          : <PageContent>Threads</PageContent>
+          }
 					{threads.map((thread, i) => {
 						return (
 							<Page number={i} key={thread._id}>
