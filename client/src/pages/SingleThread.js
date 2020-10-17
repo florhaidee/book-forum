@@ -21,12 +21,12 @@ const Page = React.forwardRef((props, ref) => {
 				{props.children.posts.length > 0 &&
 					props.children.posts.map((post) => {
 						return (
-							<div className='border border-warning my-1'>
+							<div className='border border-warning my-1' key={post._id}>
 								<p className='postText '>{post.postBody}</p>
-										<p className='postText'>{post.username}
-											<span>  --  {post.createdAt}</span>
-										</p>
-								</div>
+								<p className='postText'>{post.username}
+									<span>  --  {post.createdAt}</span>
+								</p>
+							</div>
 						);
 					})}
 			</div>

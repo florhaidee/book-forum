@@ -8,10 +8,11 @@ import SingleThread from './pages/SingleThread';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Login from './components/LoginForm';
-import Book from './components/Book';
 import Signup from './pages/Signup';
 import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
+import Threads from './pages/Threads';
+import SearchThreads from './pages/SearchThreads';
 
 function App() {
 	return (
@@ -25,7 +26,8 @@ function App() {
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/signup' component={Signup} />
 						<Route exact path='/dashboard' component={Dashboard} />
-						<Route exact path='/threads/:genre' component={Book} />
+						<Route exact path='/threads/:genre' component={Threads} />
+						<Route exact path='/threads' component={SearchThreads} />
 						<Route component={NotFound} />
 					</Switch>
 				</Router>
