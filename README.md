@@ -39,15 +39,15 @@ none
 > 4. [Heroku](www.heroku.com)
 > 5. [React](https://reactjs.org/)
 
-> - [Zachary](https://github.com/ZQWhiting?tab=repositories) 
-> - [Flora](https://github.com/florhaidee?tab=repositories)
-> - [Jeremy](https://github.com/jeremyrice98?tab=repositories) 
-> - [Graham](https://github.com/grahamgibbs)
-> - [Chris](https://github.com/ChrisH81?tab=repositories)  
+> - [Zachary Whiting](https://github.com/ZQWhiting?tab=repositories) 
+> - [Flora Guerra](https://github.com/florhaidee?tab=repositories)
+> - [Jeremy Rice](https://github.com/jeremyrice98?tab=repositories) 
+> - [Graham Gibbs](https://github.com/grahamgibbs)
+> - [Chris H](https://github.com/ChrisH81?tab=repositories)  
   
   
 ## **QUESTIONS**  
 Please contact us for any inquiries!  
 | Reach Out |  
 | :------: | 
-| [Jeremy](ricefamily1003@gmail.com), [Zachary](zach.whiting@icloud.com) ,[Flora](florhaideedev@gmail.com) ,[Graham](grahamski9@gmail.com) , [Chris] (kekaneone@gmail.com)| 
+| [Jeremy Rice](ricefamily1003@gmail.com), [Zachary Whiting](zach.whiting@icloud.com) ,[Flora Guerra](florhaideedev@gmail.com) ,[Graham Gibbs](grahamski9@gmail.com) , [Chris H](kekaneone@gmail.com)| 
