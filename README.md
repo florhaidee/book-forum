@@ -23,9 +23,6 @@
 ## **INSTALLATION**   
 No need to install, just go to the weblink provided.  
   
-## **USAGE**  
-none  
-  
 ## **LICENSE**  
 > This application is covered under the MIT license.
   
