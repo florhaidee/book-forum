@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useParams } from 'react-router-dom';
 
-import { QUERY_THREAD } from '../../utils/queries';
 import { ADD_POST } from '../../utils/mutations';
 
 const AddPostForm = () => {
@@ -10,22 +9,7 @@ const AddPostForm = () => {
 	const [postBody, setText] = useState('');
 	const [characterCount, setCharacterCount] = useState(0);
 
-	const [addPost, { error }] = useMutation(ADD_POST, {
-		update(cache, { data: { addPost } }) {
-			const { thread } = cache.readQuery({
-				query: QUERY_THREAD,
-				variables: id,
-			});
-			// prepend the newest post to the front of the array
-			cache.writeQuery({
-				query: QUERY_THREAD,
-				variables: id,
-				data: {
-					thread: { ...thread, posts: [...thread.posts, addPost] },
-				},
-			});
-		},
-	});
+	const [addPost, { error }] = useMutation(ADD_POST);
 
 	const handleTextChange = (event) => {
 		if (event.target.value.length <= 280) {

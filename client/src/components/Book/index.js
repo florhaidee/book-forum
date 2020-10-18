@@ -19,36 +19,43 @@ const PageCover = React.forwardRef((props, ref) => {
 });
 
 const PageContent = React.forwardRef((props, ref) => {
-  console.log("genre pagecontent", props.children)
-  return (
-    <div className="Page" ref={ref} data-density="hard">
-      <div className="pageCover">
-        {(() => {
-          switch (props.children) {
-            case 'Fantasy':
-              return(
-                <span><img src={Fantasy} alt="category"/></span>
-              )
-            case 'Adventure':
-              return(
-                <span><img src={Adventure} alt="category"/></span>
-              )
-            case 'Romance':
-              return(
-                <span><img src={Romance} alt="category"/></span>
-              )
-            case 'Mystery':
-              return(
-                <span><img src={Mystery} alt="category"/></span>
-              )
-            default:
-              return (<p></p>)
-          }
-        })()}
-        <h2>{props.children}</h2>
-      </div>
-    </div>
-  )
+	return (
+		<div className='Page' ref={ref} data-density='hard'>
+			<div className='pageCover'>
+				{(() => {
+					switch (props.children) {
+						case 'Fantasy':
+							return (
+								<span>
+									<img src={Fantasy} alt='category' />
+								</span>
+							);
+						case 'Adventure':
+							return (
+								<span>
+									<img src={Adventure} alt='category' />
+								</span>
+							);
+						case 'Romance':
+							return (
+								<span>
+									<img src={Romance} alt='category' />
+								</span>
+							);
+						case 'Mystery':
+							return (
+								<span>
+									<img src={Mystery} alt='category' />
+								</span>
+							);
+						default:
+							return <p></p>;
+					}
+				})()}
+				<h2>{props.children}</h2>
+			</div>
+		</div>
+	);
 });
 
 const Page = React.forwardRef((props, ref) => {
@@ -84,16 +91,16 @@ function Book({threads, genre}) {
 	return (
 		<div className='container'>
 			<div className='bookContainer'>
-        <HTMLFlipBook width={600} 
-          height={800} 
+        <HTMLFlipBook width={600}
+          height={800}
           size="stretch"
           minWidth={315}
           maxWidth={1000}
           minHeight={600}
           maxHeight={1533} >
 					<PageCover></PageCover>
-          { genre 
-          ? <PageContent>{genre}</PageContent> 
+          { genre
+          ? <PageContent>{genre}</PageContent>
           : <PageContent>Threads</PageContent>
           }
 					{threads.map((thread, i) => {
