@@ -3,6 +3,9 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import { QUERY_ME } from '../utils/queries';
 import { ADD_THREAD } from '../utils/mutations';
+import { Redirect } from 'react-router-dom';
+
+import Auth from '../utils/auth';
 
 const Dashboard = () => {
 	const [threadText, setText] = useState('');
@@ -49,6 +52,10 @@ const Dashboard = () => {
 			console.error(e);
 		}
 	};
+
+	if (!Auth.loggedIn()) {
+		return <Redirect to='/login' />;
+	}
 
 	return (
 		<div className='container'>
