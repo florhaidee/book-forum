@@ -50,4 +50,4 @@ none
 Please contact us for any inquiries!  
 | Reach Out |  
 | :------: | 
-| [Jeremy](ricefamily1003@gmail.com), [Zachary](zach.whiting@icloud.com) ,[Flora](florhaideedev@gmail.com) ,[Graham](grahamski9@gmail.com) , [Chris] (kekaneone@gmail.com)| 
+| [Jeremy Rice](ricefamily1003@gmail.com), [Zachary Whiting](zach.whiting@icloud.com) ,[Flora Guerra](florhaideedev@gmail.com) ,[Graham Gibbs](grahamski9@gmail.com) , [Chris H](kekaneone@gmail.com)| 
