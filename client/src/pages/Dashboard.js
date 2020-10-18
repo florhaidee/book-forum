@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import { QUERY_ME } from '../utils/queries';
@@ -9,7 +9,7 @@ const Dashboard = () => {
 	const [characterCount, setCharacterCount] = useState(0);
 	const [editThread, setEditThread] = useState(false);
 	const [genre, setGenre] = useState('Fantasy');
-	const [updateThread] = useMutation(UPDATE_THREAD);;
+	const [updateThread] = useMutation(UPDATE_THREAD);
 
 	const [addThread, { error }] = useMutation(ADD_THREAD, {
 		update(cache, { data: { addThread } }) {
@@ -52,10 +52,6 @@ const Dashboard = () => {
 		}
 	};
 
-	// useEffect(() => {
-
-	// }, [setEditThread])
-
 	const handleEditThread = (e) => {
 		e.preventDefault();
 		setEditThread(true);
@@ -65,7 +61,7 @@ const Dashboard = () => {
 		e.preventDefault();
 
 		updateThread({
-			variables: {threadId: e.target.id, threadText: e.target.value},
+			variables: { threadId: e.target.id, threadText: e.target.value },
 		});
 
 		setEditThread(false);
