@@ -39,11 +39,11 @@ none
 > 4. [Heroku](www.heroku.com)
 > 5. [React](https://reactjs.org/)
 
-> - [Zachary](https://github.com/ZQWhiting?tab=repositories) 
-> - [Flora](https://github.com/florhaidee?tab=repositories)
-> - [Jeremy](https://github.com/jeremyrice98?tab=repositories) 
-> - [Graham](https://github.com/grahamgibbs)
-> - [Chris](https://github.com/ChrisH81?tab=repositories)  
+> - [Zachary Whiting](https://github.com/ZQWhiting?tab=repositories) 
+> - [Flora Guerra](https://github.com/florhaidee?tab=repositories)
+> - [Jeremy Rice](https://github.com/jeremyrice98?tab=repositories) 
+> - [Graham Gibbs](https://github.com/grahamgibbs)
+> - [Chris H](https://github.com/ChrisH81?tab=repositories)  
   
   
 ## **QUESTIONS**  
