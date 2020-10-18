@@ -43,6 +43,8 @@ const typeDefs = gql`
 		addThread(threadText: String!, genre: String!): Thread
 		addPost(threadId: ID!, postBody: String!): Thread
 		addFriend(friendId: ID!): User
+		updateThread(threadId: ID!, threadText: String): Thread
+		deletePost(threadId: ID!, postId: ID!): Thread
 	}
 
 	type Auth {

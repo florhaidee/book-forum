@@ -117,6 +117,32 @@ const resolvers = {
 
 			throw new AuthenticationError('You need to be logged in!');
 		},
+		updateThread: async (parent, { threadId, threadText }, context) => {
+			if (context.user) {
+				const updatedThread = await Thread.findOneAndUpdate(
+					{_id: threadId},
+					{threadText: threadText},
+					{new: true, runValidators: true}
+				)
+
+				return updatedThread
+			}
+
+			throw new AuthenticationError('You need to be logged in!');
+		},
+		deletePost: async (parent, { threadId, postId }, context) => {
+			if (context.user) {
+				const updatedThread = await Thread.findOneAndUpdate(
+					{_id: threadId},
+					{$pull: {posts: {_id: postId}}},
+					{new: true}
+				)
+
+				return updatedThread
+			}
+
+			throw new AuthenticationError('You need to be logged in!');
+		},
 	},
 };
 
