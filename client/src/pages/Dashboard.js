@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import { QUERY_ME } from '../utils/queries';
-import { ADD_THREAD } from '../utils/mutations';
+import { ADD_THREAD, UPDATE_THREAD } from '../utils/mutations';
 import { Redirect } from 'react-router-dom';
 
 import Auth from '../utils/auth';
@@ -10,7 +10,9 @@ import Auth from '../utils/auth';
 const Dashboard = () => {
 	const [threadText, setText] = useState('');
 	const [characterCount, setCharacterCount] = useState(0);
+	const [editThread, setEditThread] = useState(false);
 	const [genre, setGenre] = useState('Fantasy');
+	const [updateThread] = useMutation(UPDATE_THREAD);
 
 	const [addThread, { error }] = useMutation(ADD_THREAD, {
 		update(cache, { data: { addThread } }) {
@@ -53,6 +55,21 @@ const Dashboard = () => {
 		}
 	};
 
+	const handleEditThread = (e) => {
+		e.preventDefault();
+		setEditThread(true);
+	};
+
+	const submitEditThread = (e) => {
+		e.preventDefault();
+
+		updateThread({
+			variables: { threadId: e.target.id, threadText: e.target.value },
+		});
+
+		setEditThread(false);
+	};
+
 	if (!Auth.loggedIn()) {
 		return <Redirect to='/login' />;
 	}
@@ -93,13 +110,27 @@ const Dashboard = () => {
 				<div>Loading...</div>
 			) : (
 				<div className='mx-2 mt-4'>
-					My Threads:
+					My Threads (Click text to edit):
 					{me.threads.map(({ _id, threadText, genre, createdAt }) => (
 						<div
 							key={_id}
 							className='row my-2 border border-dark p-2'
 						>
-							<div className='col-12 col-lg-8'>{threadText}</div>
+							{editThread ? (
+								<textarea
+									id={_id}
+									className='col-12 col-lg-8'
+									onBlur={submitEditThread}
+									defaultValue={threadText}
+								/>
+							) : (
+								<div
+									className='col-12 col-lg-8'
+									onClick={handleEditThread}
+								>
+									{threadText}
+								</div>
+							)}
 							<div className='col-12 col-lg-2'>
 								Genre: {genre}
 							</div>
