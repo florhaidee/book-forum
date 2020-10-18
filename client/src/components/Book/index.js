@@ -17,7 +17,6 @@ const PageCover = React.forwardRef((props, ref) => {
 });
 
 const PageContent = React.forwardRef((props, ref) => {
-	console.log('genre pagecontent', props.children);
 	return (
 		<div className='Page' ref={ref} data-density='hard'>
 			<div className='pageCover'>
@@ -96,21 +95,19 @@ function Book({ threads = [], genre }) {
     <div className='container'>
     {console.log(threads.length)}
 			<div className='bookContainer'>
-				<HTMLFlipBook
-					width={600}
-					height={800}
-					size='stretch'
-					minWidth={315}
-					maxWidth={1000}
-					minHeight={600}
-					maxHeight={1533}
-				>
+
+				<HTMLFlipBook width={600}
+          height={800}
+          size="stretch"
+          minWidth={315}
+          maxWidth={1000}
+          minHeight={600}
+          maxHeight={1533} >
 					<PageCover></PageCover>
-					{genre ? (
-						<PageContent>{genre}</PageContent>
-					) : (
-						<PageContent>Threads</PageContent>
-					)}
+          { genre
+          ? <PageContent>{genre}</PageContent>
+          : <PageContent>Threads</PageContent>
+          }
 					{threads.length ? (
             threads.map((thread, i) => {
               return (
