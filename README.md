@@ -23,9 +23,6 @@
 ## **INSTALLATION**   
 No need to install, just go to the weblink provided.  
   
-## **USAGE**  
-none  
-  
 ## **LICENSE**  
 > This application is covered under the MIT license.
   
@@ -35,9 +32,14 @@ none
 >     - [bootstrap](https://getbootstrap.com/)
 >     - [if-env](https://www.npmjs.com/package/if-env)
 >     - [graphql](https://www.npmjs.com/package/graphql)
-> 3. [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-> 4. [Heroku](www.heroku.com)
-> 5. [React](https://reactjs.org/)
+>     - [grid-syled](https://www.npmjs.com/package/grid-styled)
+>     - [request](https://www.npmjs.com/package/request)
+>     - [apollo](https://www.npmjs.com/package/apollo)
+>     - [jwt-decode](https://www.npmjs.com/package/jwt-decode)
+> 3. [MongoDB](https://www.mongodb.com/)
+> 4. [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+> 5. [Heroku](www.heroku.com)
+> 6. [React](https://reactjs.org/)
 
 > - [Zachary Whiting](https://github.com/ZQWhiting?tab=repositories) 
 > - [Flora Guerra](https://github.com/florhaidee?tab=repositories)
