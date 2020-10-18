@@ -13,10 +13,11 @@ const Page = React.forwardRef((props, ref) => {
 
 	const deletePostHandler = (e) => {
 		e.preventDefault();
-
-		deletePost({
-			variables: {threadId: e.target.dataset.threadid, postId: e.target.dataset.postid},
-		});
+		if (Auth.loggedIn() && Auth.getProfile().data.username === e.target.dataset.username) {
+			deletePost({
+				variables: {threadId: e.target.dataset.threadid, postId: e.target.dataset.postid},
+			});
+		}
 	};
 
 	return (
@@ -42,13 +43,17 @@ const Page = React.forwardRef((props, ref) => {
 									<span> -- {post.createdAt}</span>
 								</p>
 								{Auth.loggedIn() &&
-									<button
-										onClick={deletePostHandler}
-										data-postid={post._id}
-										data-threadid={props.children._id}>
-									Delete Post
-									</button>
-								}
+									Auth.getProfile().data.username ===
+										post.username && (
+										<button
+											onClick={deletePostHandler}
+											data-postid={post._id}
+											data-threadid={props.children._id}
+											data-username={post.username}
+										>
+											Delete your post
+										</button>
+									)}
 							</div>
 						);
 					})}
