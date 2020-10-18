@@ -67,3 +67,25 @@ export const ADD_FRIEND = gql`
 		}
 	}
 `;
+
+export const UPDATE_THREAD = gql`
+	mutation updateThread($threadId: ID!, $threadText: String!) {
+		updateThread(threadId: $threadId, threadText: $threadText) {
+			_id
+			threadText
+		}
+	}
+`;
+
+export const DELETE_POST = gql`
+	mutation deletePost($threadId: ID!, $postId: ID!) {
+		deletePost(threadId: $threadId, postId: $postId) {
+			_id
+			threadText
+			posts {
+				_id
+				postBody
+			}
+		}
+	}
+`;
