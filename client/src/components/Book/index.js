@@ -93,9 +93,7 @@ const Page = React.forwardRef((props, ref) => {
 function Book({ threads = [], genre }) {
   return (
     <div className='container'>
-    {console.log(threads.length)}
 		<div className='bookContainer'>
-
 			<HTMLFlipBook width={600}
 				height={800}
 				size="stretch"

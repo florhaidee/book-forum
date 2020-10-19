@@ -70,7 +70,7 @@ const Page = React.forwardRef((props, ref) => {
 				See All Threads!
 			</Link>
 			<div className='pageFooter'>
-				Page number: {props.number + 2} - {props.children.createdAt} -
+				Page: {props.number + 2}    -  {props.children.createdAt} - 
 				Created by: {props.children.username}
 			</div>
 		</div>
@@ -98,7 +98,7 @@ const SingleThread = (props) => {
 							width={600}
 							height={800}
 							size='stretch'
-							minWidth={315}
+							minWidth={300}
 							maxWidth={1800}
 							minHeight={400}
 							maxHeight={1533}
