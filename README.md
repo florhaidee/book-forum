@@ -3,7 +3,9 @@
 ![MIT](https://img.shields.io/badge/License-MIT-blue.svg)  
   
 ## **DESCRIPTION**   
-> A place to discuss books of different genres.     
+> A place to discuss books of different genres.    
+
+![Main page](./client/public/images/book-forum.png)
   
 ## **TABLE OF CONTENTS**  
 * [DESCRIPTION](#DESCRIPTION)  
