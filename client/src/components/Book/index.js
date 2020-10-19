@@ -94,35 +94,34 @@ function Book({ threads = [], genre }) {
   return (
     <div className='container'>
     {console.log(threads.length)}
-			<div className='bookContainer'>
+		<div className='bookContainer'>
 
-				<HTMLFlipBook width={600}
-          height={800}
-          size="stretch"
-          minWidth={315}
-          maxWidth={1000}
-          minHeight={600}
-          maxHeight={1533} >
-					<PageCover></PageCover>
-          { genre
-          ? <PageContent>{genre}</PageContent>
-          : <PageContent>Threads</PageContent>
-          }
-					{threads.length ? (
-            threads.map((thread, i) => {
-              return (
-                <Page number={i} key={thread._id}>
-									{thread}
-								</Page>
-							);
-						})
-					) : (
-						<Page number={1}>
-							<Link to='/dashboard'>
-								Be the first to create a thread for this genre!
-							</Link>
-						</Page>
-					)}
+			<HTMLFlipBook width={600}
+				height={800}
+				size="stretch"
+				minWidth={315}
+				maxWidth={1000}
+				minHeight={600}
+				maxHeight={1533} 
+			>
+				<PageCover></PageCover>
+				{ genre
+				? <PageContent>{genre}</PageContent>
+				: <PageContent>Threads</PageContent>
+				}
+				{ threads.length > 0
+				? (
+				    threads.map((thread, i) => {
+					return (
+						<Page number={i} key={thread._id}>{thread}</Page>
+					);})
+				) : (
+					<Page number={1}>
+						<Link to='/dashboard'>
+							Be the first to create a thread for this genre!
+						</Link>
+					</Page>
+				)}
 					<PageContent></PageContent>
 					<PageCover> </PageCover>
 				</HTMLFlipBook>
