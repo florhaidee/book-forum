@@ -23,7 +23,7 @@ code {
 
 .Page {
   display: flex;
-  height: 100%;
+  width: 85%;
   background-color: rgba(247, 238, 223, 0.733);
   box-shadow: 5px 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -55,10 +55,11 @@ code {
   align-content: center;
   justify-content: center;
 }
-.pageFooter{
-  height: 15%;
+.pageFooter {
+  font-size: .7rem;
+  margin-left: 1rem;
+  height: 10%;
 }
-
 /*Styles for Page Cover */
 .pageCover{
   display: flex;
@@ -160,6 +161,7 @@ code {
   }
   .pageHeader {
     margin: 1%;
+    height: 5%;
   }
   h2 {
     font-size: 1rem;
@@ -173,17 +175,20 @@ code {
     margin: 0.2rem;
     font-size: .8rem;
   }
-  .pageText p, a, .pageFooter{
+  .pageText p, a{
    font-size: .8rem;
    margin-left: 1rem;
   }
   .postText {
     margin: 1%;
   }
-
+  .pageFooter {
+    font-size: .6rem;
+    margin-left: .5rem;
+  }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1100px) {
   .container {
     width: 100%;
     margin: 1% auto;
@@ -196,6 +201,7 @@ code {
   }
   .pageHeader {
     margin: 1%;
+    height: 5%;
   }
   h2 {
     font-size: 1rem;
@@ -208,18 +214,16 @@ code {
     justify-content: center;
     margin: 0.2rem;
     font-size: .8rem;
-    height: 70%;
+    height: 80%;
   }
-  .pageText p, .Page a, .pageFooter{
+  .pageText p, .Page a{
    font-size: .8rem;
    margin-left: 1rem;
   }
   .postText {
     margin: 1%;
   }
-
   button {
     font-size: .8rem;
   }
-
 }
